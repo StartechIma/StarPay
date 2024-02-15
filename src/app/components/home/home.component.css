@@ -1,0 +1,37 @@
+body {
+    background-image: url('/assets/images/stars_2.png'); /* Substitua com o caminho correto para a sua imagem */
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-link {
+    display: inline-block;
+    padding: 5px 80px;
+    margin: 5px 20px;
+    background-color: #f3be73; /* Cor do botão */
+    color: #ffffff; /* Cor do texto do botão */
+    text-decoration: none; /* Removendo sublinhado do link */
+    border-radius: 20px; /* Borda arredondada */
+}
+
+.logo-rocket{
+    float: center;
+    /* margin-left: 100px; */
+}
+
+h1{
+    color: #fff;
+    font-weight: 900;
+    font-family: 'Khand';
+}
+
+p{
+    color: #fff;
+}
+
