@@ -1,5 +1,5 @@
 body {
-    background-image: url('/assets/images/stars_2.png'); /* Substitua com o caminho correto para a sua imagem */
+    background-image: url('/assets/images/stars_2.png');
     background-size: cover;
     background-position: center;
     margin: 0;
@@ -14,10 +14,10 @@ body {
     display: inline-block;
     padding: 5px 80px;
     margin: 5px 20px;
-    background-color: #f3be73; /* Cor do botão */
-    color: #ffffff; /* Cor do texto do botão */
-    text-decoration: none; /* Removendo sublinhado do link */
-    border-radius: 20px; /* Borda arredondada */
+    background-color: #f3be73; 
+    color: #ffffff; 
+    text-decoration: none; 
+    border-radius: 20px; 
 }
 
 .logo-rocket{
