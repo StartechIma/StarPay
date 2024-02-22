@@ -6,6 +6,7 @@ import { User } from '../Models/User';
 })
 export class UserService {
   private localStorageUser = 'userData';
+  private localStorageCurrentUser = 'currentUser';
 
   constructor() { }
 
@@ -22,13 +23,36 @@ export class UserService {
   }
 
   // Método para obter todos os usuários armazenados
-  getUsers(): User[] {
+  login(cpf:string, password:string): boolean{
+    const users = this.getUsers();
+    const user = users.find(u => u.cpf === cpf && u.password === password);
+
+    if(user){
+      localStorage.setItem(this.localStorageUser, JSON.stringify(user));
+      alert('Login bem-sucedido');
+      return true;
+    }else{
+      alert('Falha no login. Usuário não encontrado ou senha incorreta.');
+      return false;
+    }
+  }
+
+  private getUsers(): User[] {
     const userData = localStorage.getItem(this.localStorageUser);
     return userData ? JSON.parse(userData) : [];
   }
 
   // Método para salvar os usuários no localStorage
-  saveUsers(users: User[]): void {
+  private saveUsers(users: User[]): void {
     localStorage.setItem(this.localStorageUser, JSON.stringify(users));
   }
+
+  getCurrentUser(): User | null {
+    const currentUserData = localStorage.getItem(this.localStorageCurrentUser);
+    return currentUserData ? JSON.parse(currentUserData) : null;
+  }
+
+  logout(): void {
+    localStorage.removeItem(this.localStorageCurrentUser);
+  }  
 }

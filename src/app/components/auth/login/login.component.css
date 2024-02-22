@@ -1,11 +1,11 @@
 body {
-    background-image: url('/assets/images/stars_2.png'); /* Substitua com o caminho correto para a sua imagem */
+    background-image: url('/assets/images/stars_2.png');
     background-size: cover;
     background-position: center;
-    margin: 0;
     padding: 0;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -25,12 +25,6 @@ h6{
     color: grey;
 }
 
-.text-card{
-    float: right;
-    color: grey;
-    padding-top: 15px;
-    padding-bottom: 25px;
-}
 .link-orange{
     color: #f3be73;
 }
@@ -49,17 +43,16 @@ p{
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: auto;
 }
 
 .login-container {
     max-width: 350px;
-    margin: auto;
-    margin-top: 100px;
-    float: right;
-    margin-right: 100px; 
+    margin: auto; 
 }
 
-.logo-rocket{
-    float: left;
-    margin-left: 200px;
+.logo-rocket {
+    text-align: center; 
+    margin-top: 20px; 
+    max-width: 80%; 
 }
