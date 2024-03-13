@@ -6,13 +6,15 @@ import { RouterOutlet } from '@angular/router';
 import { HomeComponent } from "./dashboard/home/home.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { RegisterComponent } from './components/auth/register/register.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  imports: [CommonModule, FormsModule, RouterOutlet, HomeComponent, FooterComponent, LandingPageComponent]
+  imports: [CommonModule, FormsModule, RouterOutlet, HomeComponent, FooterComponent, LandingPageComponent, LoginComponent, RegisterComponent]
 })
 export class AppComponent {
   title = 'StarPay';

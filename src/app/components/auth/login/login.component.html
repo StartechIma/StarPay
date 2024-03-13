@@ -1,19 +1,3 @@
-<!-- <h1>Login no Banco Digital</h1>
-
-<form [formGroup]="loginForm" *ngIf="loginForm">
-  <label for="username">Nome de usuário</label>
-  <input type="text" id="username" formControlName="username" required>
-
-  <label for="password">Senha</label>
-  <input type="password" id="password" formControlName="password" required>
-
-  <button type="submit" (click)="onSubmit()">Entrar</button>
-</form>
-
-<div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div> -->
-
-
-
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -35,46 +19,51 @@
 
     <div class="login-container">
       <div class="card-body">
-
         <h3>Login</h3>
         <h6>Acesse sua conta</h6>
 
-        <form>
-
+        <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
           <div class="form-group">
-            <input type="text" class="form-control" id="cpf" placeholder="CPF">
+            <input type="text" class="form-control" formControlName="cpf" placeholder="CPF"
+                   [ngClass]="{ 'is-invalid': loginForm.get('cpf')?.invalid && (loginForm.get('cpf')?.dirty || loginForm.get('cpf')?.touched) }">
+            <div *ngIf="loginForm.get('cpf')?.invalid && (loginForm.get('cpf')?.dirty || loginForm.get('cpf')?.touched)"
+                 class="invalid-feedback">
+              CPF é obrigatório.
+            </div>
           </div>
-
+          
           <div class="form-group">
-            <input type="password" class="form-control" id="password" placeholder="Senha">
+            <input type="password" class="form-control" formControlName="password" placeholder="Senha"
+                   [ngClass]="{ 'is-invalid': loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched) }">
+            <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)"
+                 class="invalid-feedback">
+              Senha é obrigatória.
+            </div>
           </div>
-
+        
           <p class="text-card text-right">
             <a class="links">Esqueceu sua senha?</a>
           </p>
-
-          <button routerLink="/lottie" class="button-primary">
+        
+          <button type="submit" routerLink="/lottie" class="button-primary">
             Enviar
           </button>
-
+          
           <p class="text-card">
             <a routerLink="/register" class="links">
               Ainda não tem conta? <span>Cadastre-se</span>
             </a>
           </p>
-
+        
+          <div class="social-icons">
+            <ul>
+              <li><i class="fa-brands fa-square-github"></i></li>
+              <li><i class="fa-brands fa-instagram"></i></li>
+              <li><i class="fa-brands fa-square-twitter"></i></li>
+            </ul>
+          </div>
         </form>
-
-        <div class="social-icons">
-          <ul>
-            <li><i class="fa-brands fa-square-github"></i></li>
-            <li><i class="fa-brands fa-instagram"></i></li>
-            <li><i class="fa-brands fa-square-twitter"></i></li>
-          </ul>
-        </div>
-
-      </div>
-
+        
       <div class="footer">
         <p>
           copyright 2024 StarTech All Rights Reserved

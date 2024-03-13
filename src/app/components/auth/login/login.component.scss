@@ -154,4 +154,10 @@
   .login-container {
     margin-right: auto;
   }
+
+  .is-invalid {
+    border-color:rgba(220, 53, 69, 1.0);  /* Cor da borda vermelha */
+    border-width: 2px !important; /* Largura da borda */
+  }
+
 }
