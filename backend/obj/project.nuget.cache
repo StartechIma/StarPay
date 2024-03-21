@@ -1,6 +1,8 @@
 {
   "version": 2,
+
   "dgSpecHash": "Op5U6eKm47+jo9gC1VMx4bbW6SPEwRhFvsqNlfC3kKMQNL+mWlUZgPvsu1NV6tofkisBcXttNnyqYUuH4eG91A==",
+  "dgSpecHash": "0jTHW+T+oqs27JZoI2n4P8IfhDkSvY+ZU2OHlDsHhJje83n6W5y+4rIUzLvU4Wmw8AEnjsKBhNdEu9IMdNXm1Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\aline\\Documents\\cadastro\\StarPay\\Backend\\StarBank.csproj",
   "expectedPackageFiles": [
