@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aline\\Documents\\cadastro\\StarPay\\Backend\\StarBank.csproj": {}
+    "C:\\Users\\aline\\Desktop\\sharpcoders\\StarPay\\backend\\StarBank.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aline\\Documents\\cadastro\\StarPay\\Backend\\StarBank.csproj": {
+    "C:\\Users\\aline\\Desktop\\sharpcoders\\StarPay\\backend\\StarBank.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aline\\Documents\\cadastro\\StarPay\\Backend\\StarBank.csproj",
+        "projectUniqueName": "C:\\Users\\aline\\Desktop\\sharpcoders\\StarPay\\backend\\StarBank.csproj",
         "projectName": "StarBank",
-        "projectPath": "C:\\Users\\aline\\Documents\\cadastro\\StarPay\\Backend\\StarBank.csproj",
+        "projectPath": "C:\\Users\\aline\\Desktop\\sharpcoders\\StarPay\\backend\\StarBank.csproj",
         "packagesPath": "C:\\Users\\aline\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aline\\Documents\\cadastro\\StarPay\\Backend\\obj\\",
+        "outputPath": "C:\\Users\\aline\\Desktop\\sharpcoders\\StarPay\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\aline\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -32,41 +32,38 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "AutoMapper": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
-              "version": "[13.0.1, )"
+              "version": "[12.0.1, )"
             },
-            "Microsoft.AspNetCore.OpenApi": {
+            "IdentityModel": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[6.2.0, )"
             },
-            "Microsoft.EntityFrameworkCore": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.3, )"
             },
-            "Microsoft.EntityFrameworkCore.Sqlite": {
+            "Microsoft.AspNetCore.Mvc.Core": {
               "target": "Package",
-              "version": "[8.0.3, )"
+              "version": "[2.2.5, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.3, )"
-            },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.4.0, )"
-            },
-            "System.IdentityModel.Tokens.Jwt": {
-              "target": "Package",
-              "version": "[7.4.1, )"
             }
           },
           "imports": [
@@ -81,14 +78,11 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\aline\\AppData\\Roaming\\.dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

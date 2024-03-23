@@ -1,31 +1,38 @@
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+﻿using StarBank.Domain;
+using StarBank.Domain.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using StarBank.Domain;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddDbContext<BancoDbContext>(options =>
-{
-    options.UseSqlite(builder.Configuration.GetConnectionString("ConexaoPadrao"));
-});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-var app = builder.Build();
+var connectionString = builder.Configuration.GetConnectionString("DefaultConectionString");
 
-if (app.Environment.IsDevelopment())
+builder.Services.AddDbContext<StarDbContext>(options =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    options.UseSqlite("DefaultConectionString");
+});
 
-app.UseHttpsRedirection();
-
-app.MapControllers();
+builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<StarDbContext>().AddDefaultTokenProviders();
 
 
-app.Run();
+
+    builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+    var app = builder.Build();
+
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
+
+    app.UseHttpsRedirection();
+
+    app.MapControllers();
 
 
+    app.Run();
