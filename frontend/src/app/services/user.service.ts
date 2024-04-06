@@ -1,58 +1,28 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from '../Models/User';
+import { Observable, first } from 'rxjs';
+import { ContaPJ } from '../Models/ContaPJ';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private localStorageUser = 'userData';
-  private localStorageCurrentUser = 'currentUser';
 
-  constructor() { }
+  private apiUrl = 'http://localhost:5287/v1/customer';
 
-  // Método para registrar um novo usuário
-  registerUser(user: User): void {
-    // Adicione uma verificação para evitar adicionar usuários com campos obrigatórios vazios
-    if (user && user.fullName && user.cpf && user.phone && user.address && user.password) {
-      const existingUsers = this.getUsers();
-      existingUsers.push(user);
-      this.saveUsers(existingUsers);
-    } else {
-      alert('Tentativa de registrar usuário inválido. Campos obrigatórios ausentes.');
-    }
+  constructor(private httpRequest: HttpClient) { }
+
+  register(registerData: ContaPJ | undefined): Observable<any> {
+    const registerUrl = `${this.apiUrl}/registracontapj`;
+    return this.httpRequest.post<any>(registerUrl, registerData).pipe(first());
   }
 
-  // Método para obter todos os usuários armazenados
-  login(cpf:string, password:string): boolean{
-    const users = this.getUsers();
-    const user = users.find(u => u.cpf === cpf && u.password === password);
-
-    if(user){
-      localStorage.setItem(this.localStorageUser, JSON.stringify(user));
-      alert('Login bem-sucedido');
-      return true;
-    }else{
-      alert('Falha no login. Usuário não encontrado ou senha incorreta.');
-      return false;
-    }
+  login(email: string, password: string): Observable<any> {
+    const loginData = { email, password };
+    const loginUrl = `${this.apiUrl}/login`;
+    return this.httpRequest.post<any>(loginUrl, loginData).pipe(first());
   }
 
-  private getUsers(): User[] {
-    const userData = localStorage.getItem(this.localStorageUser);
-    return userData ? JSON.parse(userData) : [];
-  }
-
-  // Método para salvar os usuários no localStorage
-  private saveUsers(users: User[]): void {
-    localStorage.setItem(this.localStorageUser, JSON.stringify(users));
-  }
-
-  getCurrentUser(): User | null {
-    const currentUserData = localStorage.getItem(this.localStorageCurrentUser);
-    return currentUserData ? JSON.parse(currentUserData) : null;
-  }
-
-  logout(): void {
-    localStorage.removeItem(this.localStorageCurrentUser);
-  }  
 }
+
+

@@ -1,17 +1,3 @@
-<!-- <h1>Login no Banco Digital</h1>
-
-<form [formGroup]="loginForm" *ngIf="loginForm">
-  <label for="username">Nome de usuário</label>
-  <input type="text" id="username" formControlName="username" required>
-
-  <label for="password">Senha</label>
-  <input type="password" id="password" formControlName="password" required>
-
-  <button type="submit" (click)="onSubmit()">Entrar</button>
-</form>
-
-<div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div> -->
-
 
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -41,18 +27,18 @@
       <form>
 
         <div class="form-group">
-          <input type="text" class="form-control" id="cpf" placeholder="CPF">
+          <input type="text" class="form-control" id="email" placeholder="Email" [(ngModel)]="email" name="email">
         </div>
 
         <div class="form-group">
-          <input type="password" class="form-control" id="password" placeholder="Senha">
+          <input type="password" class="form-control" id="password" placeholder="Senha" [(ngModel)]="password" name="password">
         </div>
 
         <p class="text-card text-right">
           <a class="links">Esqueceu sua senha?</a>
         </p>
 
-        <button routerLink="/lottie" class="button-primary">
+        <button class="button-primary" (click)="loginUser()">
           Enviar
         </button>
 
@@ -83,3 +69,4 @@
   </div>
 
 </div>
+

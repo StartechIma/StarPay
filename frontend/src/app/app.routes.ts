@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 
 import { HomeComponent } from './pages/home/home.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
-import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { ModalTourComponent } from './components/modal-tour/modal-tour.component';
 import { MyLottieComponent } from './components/my-lottie/my-lottie.component';
@@ -13,6 +12,7 @@ import { DeniedComponent } from './components/modal/denied/denied.component';
 import { PixComponent } from './components/pix/pix.component';
 import { TicketComponent } from './components/ticket/ticket.component';
 import { WithdrawalComponent } from './components/withdrawal/withdrawal.component';
+import { LoginComponent } from './pages/auth/login/login.component';
 
 export const routes: Routes = [
 

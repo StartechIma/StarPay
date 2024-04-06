@@ -1,85 +1,48 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
-import { FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
-import { ModalTourComponent } from '../../../components/modal-tour/modal-tour.component';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink, FormsModule, CommonModule, ReactiveFormsModule, ModalTourComponent],
+  imports: [FormsModule, HttpClientModule],
+  providers: [UserService],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-
-// export class LoginComponent implements OnInit  {
-
-//   loginForm: FormGroup;
-//   errorMessage: string | undefined;
-//   showTour: boolean = true;
-
-//   constructor(private router: Router) {
-//     this.loginForm = new FormGroup({
-//       username: new FormControl('', [Validators.required]),
-//       password: new FormControl('', [Validators.required]),
-//     });
-//   }
-
-//   ngOnInit(): void {
-//   }
-
-//   onSubmit() {
-//     if (this.loginForm.valid) {
-//       const { username, password } = this.loginForm.value;
-
-//       if (username === 'admin' && password === 'admin') {
-//         this.router.navigate(['/lottie']);
-//         // if(this.showTour = true){
-//         //   // abrir o componente modalTour
-//         //   this.router.navigate(['/tour']);
-//         // } else {
-//         //   this.router.navigate(['/home']);
-//         // }
-//       } else {
-//         this.errorMessage = 'Credenciais inválidas.';
-//       }
-//     }
-//   }
-// }
-
 export class LoginComponent {
-  cpf: string = '';
+  email: string = '';
   password: string = '';
   loginError: boolean = false;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
-    // Verificar se há um usuário autenticado ao carregar a página
-    const currentUser = this.userService.getCurrentUser();
+    const currentUser = localStorage.getItem('currentUser');
 
     if (currentUser) {
       console.log('Usuário já autenticado. Redirecionando...');
-      this.router.navigate(['/página-de-sucesso']); // Substitua pelo caminho desejado
+      this.router.navigate(['/lottie']);
     }
   }
+
 
   loginUser(): void {
-    const loginSuccess = this.userService.login(this.cpf, this.password);
-    if (loginSuccess) {
-      // Redirecionar para a página de sucesso ou realizar ações desejadas
-      console.log('Redirecionando para a página de sucesso...');
-      this.router.navigate(['register']); // Substitua pelo caminho desejado
-    } else {
-      this.loginError = true;
-      // Exibir mensagem de erro ou realizar ações desejadas para login falhado
-    }
+    this.userService.login(this.email, this.password).subscribe({
+      next: (response: any) => {
+        console.log(response.token)
+        localStorage.setItem('currentUser', JSON.stringify({ email: this.email, token: response.token }));
+        this.router.navigate(['/lottie']);
+      },
+      error: (error: any) => {
+        this.loginError = true;
+        console.log('erro no logiin:' + error)
+        alert('Login inválido. Por favor, verifique suas credenciais.');
+      }
+    })
   }
 
+
 }
-
-
-
-

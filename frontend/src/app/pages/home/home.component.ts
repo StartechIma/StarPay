@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FooterComponent } from "../../components/footer/footer.component";
 import { FormsModule } from '@angular/forms';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { CentralComponent } from '../../components/central/central.component';
 import { TransacoesComponent } from '../../components/transacoes/transacoes.component';
 import { NavigationService } from '../../services/navigation.service';
@@ -22,7 +22,7 @@ import { TicketComponent } from '../../components/ticket/ticket.component';
     RouterOutlet,
     CentralComponent,
     TransacoesComponent,
-    RouterLink,
+    RouterModule,
     WithdrawalComponent,
     TransferComponent,
     TicketComponent
@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
 
 
 
-  constructor(private navigationService: NavigationService) {
+  constructor(private navigationService: NavigationService, private router: Router) {
 
     this.user = {
       name: 'Admin',
@@ -82,6 +82,11 @@ export class HomeComponent implements OnInit {
       this.selectedComponent = 'transfer';
     }
   }
+
+  logout() {
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/land']);
+ }
 
 
 
