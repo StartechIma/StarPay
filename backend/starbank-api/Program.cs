@@ -88,7 +88,21 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddAuthorization();
 
+// Configure CORS service
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigins", builder =>
+    {
+        builder.WithOrigins("http://localhost:4200") // Replace with allowed origin(s)
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
+
+// Apply CORS middleware with the named policy
+app.UseCors("AllowSpecificOrigins");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

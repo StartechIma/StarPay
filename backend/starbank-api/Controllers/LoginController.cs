@@ -11,14 +11,11 @@ public class LoginController : ControllerBase
 {
     private readonly IAutenticacaoService _autenticacaoService;
     private readonly TokenServices _tokenServices;
-    // private readonly SignInManager<IdentityUser> _signInManager;
-    // SignInManager<IdentityUser> signInManager
 
     public LoginController(IAutenticacaoService autenticacaoService, TokenServices tokenServices)
     {
         _autenticacaoService = autenticacaoService;
         _tokenServices = tokenServices;
-        // _signInManager = signInManager;
     }
 
     [HttpPost("login")]
@@ -33,7 +30,7 @@ public class LoginController : ControllerBase
 
         var token = _tokenServices.GenerateToken(customer);
 
-        return Ok(new { message = "Login bem-sucedido.", token = token });
+        return Ok(new { message = "Login bem-sucedido.", token });
     }
 
 

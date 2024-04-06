@@ -2,7 +2,6 @@
 
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace starbank_api.Domain.Models;
 
@@ -41,30 +40,5 @@ public class CustomerController : ControllerBase
         CustomerResponseDto customerResponse = _mapper.Map<CustomerResponseDto>(customer);
         return Ok(customerResponse);
     }
-
-
-    // [HttpPost("cartao")]
-    // public async Task<IActionResult> CadastrarCartao([FromBody] Cartao cartao)
-    // {
-    //     if (!ModelState.IsValid)
-    //     {
-    //         return BadRequest(ModelState);
-    //     }
-
-    //     try
-    //     {
-    //         _context.Cartoes.Add(cartao);
-    //         await _context.SaveChangesAsync();
-    //         return Ok(cartao);
-    //     }
-    //     catch (DbUpdateException)
-    //     {
-    //         return BadRequest("Não foi possível salvar o Cartão.");
-    //     }
-    // }
-
-
-
-
 
 }
