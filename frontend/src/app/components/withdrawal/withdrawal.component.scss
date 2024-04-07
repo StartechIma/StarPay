@@ -39,29 +39,6 @@
   color: var(--amarelo10);
 }
 
-// #button {
-//   display: inline-block;
-//   margin-bottom: 20px;
-//   margin-top: 10px;
-//   width: 190px;
-//   text-align: center;
-//   background-color: var(--amarelo10);
-//   color: #ffffff;
-//   padding: 10px 20px;
-//   border: none;
-//   border-radius: 5px;
-// }
-
-// .btn {
-//   display: inline-block;
-//   margin-top: 30px;
-//   margin-left: 10px;
-//   background-color: var(--amarelo10);
-//   color: #ffffff;
-//   padding: 10px 20px;
-//   border: none;
-//   border-radius: 5px;
-// }
 .other {
   display: flex;
   flex-direction: column;
@@ -72,13 +49,10 @@
   margin-top: 10px;
 }
 
-#other-value {
+#otherValue {
   text-align: center;
   // margin-left: 130px;
   margin: 20px 0;
   height: 40px;
-}
-
-#other-value {
   width: 250px;
 }

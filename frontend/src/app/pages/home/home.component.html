@@ -1,7 +1,17 @@
 <div class="container">
-  <div class="faixa-preta"></div>
+  <div class="faixa-preta">
+    <div class="logo"><span>Star</span> Bank</div>
+    <div class="top-right">
+      <div class="saudacao">{{cumprimento}}, {{user.name}}</div>
+      <div class="top-botoes">
+        <i class="bi bi-bell"></i>
+        <i class="bi bi-sun"></i>
+        <img src="{{avatar}}" alt="" srcset="">
+      </div>
+    </div>
+  </div>
 
-  <div class="top-container">
+  <!-- <div class="top-container">
     <div class="logo"><span>Star</span> Bank</div>
     <div class="top-right">
       <div class="saudacao">{{cumprimento}}, {{user.name}}</div>
@@ -11,7 +21,7 @@
         <img src="{{user.avatar}}" alt="" srcset="">
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div class="body">
     <div class="sidebar" [ngClass]="{'sidebar-active': menuIconChecked}">
@@ -50,7 +60,7 @@
     <ng-container [ngSwitch]="selectedComponent">
       <app-central class="right" *ngSwitchCase="'central'"></app-central>
       <app-transacoes class="right" *ngSwitchCase="'transacoes'"></app-transacoes>
-      <app-ticket class="right" *ngSwitchCase="'deposito'"></app-ticket>
+      <app-deposit class="right" *ngSwitchCase="'deposito'"></app-deposit>
       <app-withdrawal class="right" *ngSwitchCase="'saque'"></app-withdrawal>
       <app-transfer class="right" *ngSwitchCase="'transfer'"></app-transfer>
       <app-central class="right" *ngSwitchCaseDefault></app-central>

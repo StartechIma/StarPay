@@ -73,8 +73,8 @@ public class AccountController : ControllerBase
 
     }
 
-    [HttpGet("debosit")]
-    public async Task<ActionResult<string>> Deposit(int value)
+    [HttpPost("deposit")]
+    public async Task<ActionResult<string>> Deposit([FromBody]int value)
     {
         var customerId = _tokenServices.ExtractIdToken();
         var id = int.Parse(customerId);
@@ -92,8 +92,8 @@ public class AccountController : ControllerBase
 
     }
 
-    [HttpGet("withdraw")]
-    public async Task<ActionResult<string>> Withdraw(int value)
+    [HttpPost("withdraw")]
+    public async Task<ActionResult<string>> Withdraw([FromBody]int value)
     {
         var customerId = _tokenServices.ExtractIdToken();
         var id = int.Parse(customerId);
@@ -115,28 +115,6 @@ public class AccountController : ControllerBase
         return Ok(balance);
 
     }
-
-
-    //     [HttpGet("card")]
-    //     public ActionResult<Card> GetCartao()
-    //     {
-    //         // Recupera o ID do cliente a partir do token JWT
-    //         var idCustomer = int.Parse(_tokenServices.ExtractIdToken());
-
-    //         // Busca o cartão do cliente pelo ID
-    //         var card = _context.Cards.FirstOrDefault(c => c.AccountId == idCustomer);
-
-    //         if (card == null)
-    //         {
-    //             // Se o cartão não for encontrado, retorna um erro 404 - Not Found
-    //             return NotFound("Cartão não encontrado");
-    //         }
-
-    //         // Retorna os detalhes do cartão com um status 200 - OK
-    //         return Ok(card);
-    //     }
-
-
 
 
 }

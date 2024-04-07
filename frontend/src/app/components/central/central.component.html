@@ -6,7 +6,7 @@
       <div>{{user.name}}</div>
       <div>
         <p>Saldo Total</p>
-        <p>R$ {{(user.saldoTotal/100).toFixed(2)}}</p>
+        <p>{{ balance/100 | currency:'BRL' }}</p>
       </div>
     </div>
   </div>

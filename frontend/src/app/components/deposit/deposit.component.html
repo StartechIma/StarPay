@@ -1,0 +1,13 @@
+<div class="modal-content">
+
+  <h3>Digite o valor a ser depositado</h3>
+
+  <form class="form-wrapper">
+
+    <input type="number" class="form-control" id="value" placeholder="Valor" [(ngModel)]="value" name="value" required>
+    <div class="div-button">
+      <button class="button-primary" (click)="depositar()">Depositar</button>
+    </div>
+
+  </form>
+</div>

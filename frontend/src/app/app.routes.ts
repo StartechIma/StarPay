@@ -10,9 +10,9 @@ import { ReceiptComponent } from './components/modal/receipt/receipt.component';
 import { AcceptComponent } from './components/modal/accept/accept.component';
 import { DeniedComponent } from './components/modal/denied/denied.component';
 import { PixComponent } from './components/pix/pix.component';
-import { TicketComponent } from './components/ticket/ticket.component';
 import { WithdrawalComponent } from './components/withdrawal/withdrawal.component';
 import { LoginComponent } from './pages/auth/login/login.component';
+import { DepositComponent } from './components/deposit/deposit.component';
 
 export const routes: Routes = [
 
@@ -28,7 +28,7 @@ export const routes: Routes = [
   { path: 'accept', component: AcceptComponent },
   { path: 'denied', component: DeniedComponent },
   { path: 'pix', component: PixComponent},
-  { path: 'ticket', component: TicketComponent},
+  { path: 'deposit', component: DepositComponent},
   { path: 'withdrawal', component: WithdrawalComponent},
   { path: '**', redirectTo: 'land' },
 ];

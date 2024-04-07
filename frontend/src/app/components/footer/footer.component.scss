@@ -1,6 +1,6 @@
 
 .navigation{
-  width: 100vw;
+  width: 98vw;
   height: 70px;
   display: flex;
   margin-top: auto;
@@ -29,6 +29,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  height: 70px;
 }
 .navigation ul li a .icon{
   display: block;

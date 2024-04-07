@@ -2,6 +2,7 @@
 
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace starbank_api.Domain.Models;
 
@@ -30,9 +31,23 @@ public class CustomerController : ControllerBase
 
     [HttpGet("{id}")]
     // [Authorize]
-    public async Task<ActionResult<CustomerResponseDto>> GetCustomer(int id)
+    public async Task<ActionResult<CustomerResponseDto>> GetCustomerById(int id)
     {
         var customer = await _context.Customers.FindAsync(id);
+        if (customer == null)
+        {
+            return NotFound();
+        }
+        CustomerResponseDto customerResponse = _mapper.Map<CustomerResponseDto>(customer);
+        return Ok(customerResponse);
+    }
+
+    [HttpGet("email/{email}")]
+    // [Authorize]
+    public async Task<ActionResult<CustomerResponseDto>> GetCustomerByEmail(string email)
+    {
+        var customer = await _context.Customers.SingleOrDefaultAsync(c => c.Email == email);
+
         if (customer == null)
         {
             return NotFound();

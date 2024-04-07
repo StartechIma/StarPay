@@ -1,16 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 
-import { WithdrawalService } from './withdrawal.service';
+import { AccountService } from './account.service';
 
-describe('WithdrawalService', () => {
-  let service: WithdrawalService;
+describe('AccountService', () => {
+  let service: AccountService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(WithdrawalService);
+    service = TestBed.inject(AccountService);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-}); 
+});

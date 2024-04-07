@@ -1,5 +1,9 @@
+body{
+  width: 100%;
+}
+
 .container {
-  max-width: 1600px;
+  // max-width: 1600px;
   // max-width: 1440px;
   max-height: 1024px;
   width: 100vw;
@@ -12,13 +16,10 @@
   background-size: cover;
   height: 70px;
   width: 100%;
-  position: absolute;
+  // position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
-}
-
-.top-container {
   color: #fff;
   height: 70px;
   width: 100%;
@@ -26,6 +27,15 @@
   align-items: center;
   justify-content: space-between;
 }
+
+// .top-container {
+//   color: #fff;
+//   height: 70px;
+//   width: 100%;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+// }
 
 .logo {
   width: 260px;
@@ -186,8 +196,9 @@
 
 footer {
   display: none;
-  width: 100vw;
+  width: 100%;
   position: absolute;
+  left: 0;
   bottom: 0;
   justify-content: center;
 }
@@ -206,7 +217,7 @@ footer {
   }
 
   .right {
-    width: 100vw;
+    width: 100%;
   }
 
   .sidebar-active {

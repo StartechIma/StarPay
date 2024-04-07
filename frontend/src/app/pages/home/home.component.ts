@@ -9,6 +9,9 @@ import { NavigationService } from '../../services/navigation.service';
 import { WithdrawalComponent } from '../../components/withdrawal/withdrawal.component';
 import { TransferComponent } from '../../components/transfer/transfer.component';
 import { TicketComponent } from '../../components/ticket/ticket.component';
+import { UserService } from '../../services/user.service';
+import { HttpClientModule } from '@angular/common/http';
+import { DepositComponent } from '../../components/deposit/deposit.component';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +20,7 @@ import { TicketComponent } from '../../components/ticket/ticket.component';
   styleUrl: './home.component.scss',
   imports: [
     CommonModule,
+    HttpClientModule,
     FooterComponent,
     FormsModule,
     RouterOutlet,
@@ -25,16 +29,18 @@ import { TicketComponent } from '../../components/ticket/ticket.component';
     RouterModule,
     WithdrawalComponent,
     TransferComponent,
-    TicketComponent
-  ]
+    DepositComponent
+  ],
+  providers: [UserService],
 })
+
 export class HomeComponent implements OnInit {
 
-  user: {
-    name: string,
-    momento: Date,
-    avatar: string
-  };
+  user: any = { name: '' };
+
+  momento: Date = new Date();
+
+  avatar: string = '../../../assets/perfil.png'
 
   cumprimento: string;
 
@@ -44,15 +50,9 @@ export class HomeComponent implements OnInit {
 
 
 
-  constructor(private navigationService: NavigationService, private router: Router) {
+  constructor(private navigationService: NavigationService, private router: Router, private userService: UserService) {
 
-    this.user = {
-      name: 'Admin',
-      momento: new Date(),
-      avatar: '../../../assets/perfil.png'
-    };
-
-    const horaAtual = this.user.momento.getHours();
+    const horaAtual = this.momento.getHours();
     if (horaAtual >= 5 && horaAtual < 12) {
       this.cumprimento = 'Bom dia';
     } else if (horaAtual >= 12 && horaAtual < 18) {
@@ -66,6 +66,16 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.navigationService.selectedComponent$.subscribe(component => {
       this.selectedComponent = component;
+    });
+
+    this.userService.getUser().subscribe({
+      next: (userData) => {
+        // console.log(userData);
+        this.user = userData;
+      },
+      error: (error) => {
+        console.error('Erro ao obter usuário:', error);
+      },
     });
   }
 
@@ -86,7 +96,7 @@ export class HomeComponent implements OnInit {
   logout() {
     localStorage.removeItem('currentUser');
     this.router.navigate(['/land']);
- }
+  }
 
 
 

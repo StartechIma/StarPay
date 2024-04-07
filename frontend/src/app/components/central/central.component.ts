@@ -1,18 +1,24 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
+import { AccountService } from '../../services/account.service';
+import { UserService } from '../../services/user.service';
 
 
 @Component({
   selector: 'app-central',
   standalone: true,
   imports: [CommonModule, FormsModule, RouterOutlet, CentralComponent, FooterComponent],
+  providers: [AccountService, UserService],
   templateUrl: './central.component.html',
   styleUrl: './central.component.scss'
 })
-export class CentralComponent {
+
+export class CentralComponent implements OnInit {
+
+  balance: number = 2;
 
   user: {
     name: string,
@@ -35,15 +41,12 @@ export class CentralComponent {
     }
   };
 
-
   isRotated = false;
   toggleRotation(): void {
     this.isRotated = !this.isRotated;
   }
 
-
-
-  constructor() {
+  constructor(private accountService: AccountService, private userService: UserService) {
 
     this.user = {
       name: 'Admin',
@@ -129,13 +132,35 @@ export class CentralComponent {
         cvv: '689',
         tipo: 'Mastercard'
       }
-    };
+    }
+
+  }
+
+  ngOnInit(): void {
+    this.accountService.getBalance().subscribe({
+      next: (balanceData) => {
+        // console.log(balanceData);
+        this.balance = balanceData;
+      },
+      error: (error) => {
+        console.error('Erro ao obter usuário:', error);
+      },
+    });
 
 
+    this.userService.getUser().subscribe({
+      next: (userData) => {
+        // console.log(userData);
+        this.user.name = userData.name;
+      },
+      error: (error) => {
+        console.error('Erro ao obter usuário:', error);
+      },
+    });
   }
 
 
 
 
-
 }
+

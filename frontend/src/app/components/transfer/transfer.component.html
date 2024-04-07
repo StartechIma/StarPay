@@ -1,0 +1,24 @@
+
+
+
+<div class="modal-content">
+  <p class="text-center">Seu saldo atual é: {{ currentBalance/100 | currency:'BRL' }}</p>
+
+  <h2>Beneficiário:</h2>
+
+  <form class="form-wrapper">
+
+    <input type="text" class="form-control" id="email" placeholder="email" [(ngModel)]="email" name="email" required>
+    <div class="div-button">
+      <button class="button-primary" (click)="openInput()">Procurar</button>
+    </div>
+    <div class="other text-center mb-4" *ngIf="showInput">
+      <p>Beneficiário: </p>
+      <p>Documento: </p>
+      <h3>Valor da transferência:</h3>
+      <input type="number" placeholder="Digite o valor a ser sacado" class="form-control"><br>
+      <button class="button-primary btn-lg btn-block">Transferir</button>
+    </div>
+
+  </form>
+</div>

@@ -32,7 +32,7 @@ export class LoginComponent {
   loginUser(): void {
     this.userService.login(this.email, this.password).subscribe({
       next: (response: any) => {
-        console.log(response.token)
+        // console.log(response.token)
         localStorage.setItem('currentUser', JSON.stringify({ email: this.email, token: response.token }));
         this.router.navigate(['/lottie']);
       },
